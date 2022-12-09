@@ -71,11 +71,12 @@ public class MatchStrings {
 	 * entry in the HashSet.
 	 * 
 	 * @param compStr The string to be compared with HashSet entries.
-	 * @return A boolean value. "true" indicates a match with the provided 
+	 * @return "true" when there is a match with the provided 
 	 * string; "false" otherwise.
 	 */
 	private static boolean contains(String compStr) {
-		compStr = compStr.replaceAll("\\*", "\\.");
+        // replace '*' with '.', the any character wildcard in Java's regex
+		compStr = compStr.replaceAll("\\*", "\\."); 
 		for (String s : strSet) {
 			if (s.matches(compStr))
 				return true;
@@ -92,3 +93,9 @@ public class MatchStrings {
 	}
 }
 ```
+
+## Question 4
+### Question 4a
+The `contains` function in the previous implementation has time complexity of 
+O(n), as the worst case scenario would be iterating through the HashSet without
+finding a match.
