@@ -2,6 +2,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class MatchStrings2 {
+	
 	private static HashSet<String> strSet;
 
 	/**
@@ -19,19 +20,19 @@ public class MatchStrings2 {
 	 * entry in the HashSet.
 	 * 
 	 * @param compStr The string to be compared with HashSet entries.
-	 * @return "true" when there is a match for the provided 
-	 * string; "false" otherwise.
+	 * @return "true" when there is a match for the provided
+	 *         string; "false" otherwise.
 	 */
 	private static boolean contains(String compStr) {
-        // replace '*' with '.', the any character wildcard in Java's regex
-		compStr = compStr.replaceAll("\\*", "\\."); 
+		// replace '*' with '.', the any character wildcard in Java's regex
+		compStr = compStr.replaceAll("\\*", "\\.");
 		for (String s : strSet) {
 			if (s.matches(compStr))
 				return true;
 		}
 		return false;
 	}
-	
+
 	// Driver code
 	public static void main(String[] args) {
 		String[] strList = { "cat", "dog", "bird", "blur" };

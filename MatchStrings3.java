@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class MatchStrings3 {
+
 	private static TreeSet<String> strSet;
 
 	/**
@@ -19,8 +20,8 @@ public class MatchStrings3 {
 	 * 
 	 * @param compStr The string to be compared with TreeSet entries.
 	 * @return "true": there is a match for the provided string;
-	 * 		   "false": there is no match for the provided string, or the
-	 * 		   provided string contains more than one wildcard character.
+	 *         "false": there is no match for the provided string, or the
+	 *         provided string contains more than one wildcard character.
 	 */
 	private static boolean contains(String compStr) {
 		// counts number of asterisks, if >1 return false
@@ -40,18 +41,18 @@ public class MatchStrings3 {
 			}
 			return false;
 		} else {
-			// if a wildcard is present but not in the first char, we need to 
+			// if a wildcard is present but not in the first char, we need to
 			// get two string slices:
 			// the first is the substring before the wildcard
 			// the second is the substring after the wildcard
 			// the comparison of compStr and iterated entries in the set
 			// can be simplified into:
-			// 		1. compare the length of s and compStr
-			//		2. check if s starts with first substring
-			//		3. check if s ends with second substring
-			// the search space for such matches can be narrowed down by 
+			// 1. compare the length of s and compStr
+			// 2. check if s starts with first substring
+			// 3. check if s ends with second substring
+			// the search space for such matches can be narrowed down by
 			// constructing a subset based on the first string slice.
-			
+
 			String firstSlice = compStr.substring(0, wcIndex);
 			String secondSlice = compStr.substring(wcIndex + 1);
 
@@ -59,11 +60,9 @@ public class MatchStrings3 {
 			String subSetEnd = firstSlice + "\uFFFF";
 
 			for (String s : strSet.subSet(firstSlice, subSetEnd)) {
-				if (
-					compStr.length() == s.length() &&
-					s.startsWith(firstSlice) &&
-					s.endsWith(secondSlice)
-				)
+				if (compStr.length() == s.length() &&
+						s.startsWith(firstSlice) &&
+						s.endsWith(secondSlice))
 					return true;
 			}
 		}
